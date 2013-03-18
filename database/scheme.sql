@@ -1,0 +1,22 @@
+DROP DATABASE IF EXISTS insultme;
+CREATE DATABASE insultme;
+USE `insultme`;
+
+CREATE TABLE queries (
+	id INT(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	query CHAR(255) NOT NULL,
+	count INT(11),
+	lastQuery DATETIME
+);
+
+CREATE TABLE comments (
+	id INT(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	youtubeID CHAR(255) NOT NULL,
+	queryId INT(11) NOT NULL,
+	comment MEDIUMTEXT, 
+	author CHAR(255),
+	createdDate DATETIME NOT NULL,
+	likes INT DEFAULT 0
+);
+
+GRANT ALL PRIVILEGES ON insultme.* TO 'insultme'@'localhost' IDENTIFIED BY 'dracoliowns';
